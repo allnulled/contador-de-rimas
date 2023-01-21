@@ -1,0 +1,59 @@
+Ejecutable como documento HTML5
+    con autor allnulled
+    con nombre creador-de-canciones
+    con versión 0.0.1
+<head>
+    <title>Creador de canciones</title>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+    * { box-sizing: border-box; }
+    .texto_de_canciones { width: 100%; resize: vertical; }
+    </style>
+</head>
+<body><div id="app"></div></body>.
+
+Importo api nativa.
+
+Creo App como una aplicación vue2 con nombre "App" con plantilla {
+    <div class="App Component">
+        <h3>Creador de canciones</h3>
+        <textarea class="texto_de_canciones" v-model="cancion"></textarea>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hits</th>
+                    <th>Frase</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(frase, fraseIndex) in frases" v-bind:key="'frase-' + fraseIndex">
+                    <td>{{ frase.hits }}</td>
+                    <td>{{ frase.contenido }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+} con lógica {
+
+    Retorno {
+        Propiedad data como {
+            Propiedad cancion como "".
+            Propiedad frases como [].
+        }.
+        Propiedad watch como {
+            Método cancion con (valor) donde {
+                Asigno this.frases como valor
+                    .replace(una nueva RegExp("\n+"), "\n")
+                    .split("\n")
+                    .reverse()
+                    .map(una función con (frase) donde {
+                        Retorno {
+                            Propiedad hits como frase.split(" ").length.
+                            Propiedad contenido como frase.
+                        }.
+                    }).
+            }.
+        }.
+    }.
+} montada en "#app".
